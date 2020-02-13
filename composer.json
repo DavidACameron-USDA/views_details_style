@@ -1,0 +1,6 @@
+{
+  "name": "dcameron/views_details_style",
+  "description": "Provides a Views style plugin that groups rows in HTML5 details elements",
+  "type": "drupal-module",
+  "require": {}
+}
