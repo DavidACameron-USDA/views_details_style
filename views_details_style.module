@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Contains hooks and other functions for views_details_style.
+ */
+
+/**
+ * Prepares variables for views details rows templates.
+ *
+ * This was copied almost as-is from
+ * template_preprocess_views_view_unformatted().
+ *
+ * Default template: views-view-details.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - view: The view object.
+ *   - rows: An array of row items. Each row is an array of content.
+ */
+function template_preprocess_views_view_details(&$variables) {
+  $view = $variables['view'];
+  $rows = $variables['rows'];
+  $style = $view->style_plugin;
+  $options = $style->options;
+
+  $variables['default_row_class'] = !empty($options['default_row_class']);
+  foreach ($rows as $id => $row) {
+    $variables['rows'][$id] = [];
+    $variables['rows'][$id]['content'] = $row;
+    $variables['rows'][$id]['attributes'] = new Drupal\Core\Template\Attribute();
+    if ($row_class = $view->style_plugin->getRowClass($id)) {
+      $variables['rows'][$id]['attributes']->addClass($row_class);
+    }
+  }
+}
+
