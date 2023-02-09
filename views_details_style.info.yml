@@ -2,8 +2,6 @@ name: Views Details Style
 description: 'Provides a Views style plugin that groups rows in HTML5 details elements'
 package: Views
 type: module
-core: '8.x'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - drupal:views
-
